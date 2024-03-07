@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&family=Montserrat:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <title>Concurso Académico 2024</title>
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+</head>
+<body id="body">
+    <header class="header">
+        <div class="contenedor">
+            <div class="cont-header">
+                <div>
+                    <img class="img-header" src="/img/nuestroLogo.png" alt="img_header">
+                </div>
+                <div>
+                </div>
+                <div class="user-info">
+                    <img class="img-user" src="/img/user.webp" alt="user_img">
+                    <p><%= username %></p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="contenedor">
+            <section class="hidden upd_cont " id="upd_cont"></section>
+            <section class="puntajes">
+                <h3>Puntajes</h3>
+                <table class="contenedor">
+                    <thead>
+                        <tr>
+                            <th>Posiciones</th>
+                            <th>Usuario</th>
+                            <th>Puntuación</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% var i = 1
+                        users.forEach(function(user){ 
+                            if(user.descalificado == 0){ %>
+                            <tr>
+                                <td class="td_username"><a class="btn_dq" href="/dq/<%= user.id %>">Descalificar</a><%= i %></td>
+                                <td class="<%= user.id %> "><%= user.username %></td>
+                                <td id="score_<%= user.id %>"><%= user.score %>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="upd_btn icon icon-tabler icon-tabler-edit" id="<%= user.id %>" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                                <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                                <path d="M16 5l3 3" />
+                                </svg></td>
+                            </tr>
+                            <% i++ %>
+                        <% }
+                    else{ %>
+                        <tr>
+                            <td class="td_username"><p class="error">Descalificado</p><p class="error"><%= i %></p></td>
+                            <td class="<%= user.id %> error"><%= user.username %></td>
+                            <td id="score_<%= user.id %>" class="error"><%= user.score %>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="upd_btn icon icon-tabler icon-tabler-edit" id="<%= user.id %>" width="28" height="28" viewBox="0 0 24 24" stroke-width="1.5" stroke="#9e9e9e" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                            <path d="M7 7h-1a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-1" />
+                            <path d="M20.385 6.585a2.1 2.1 0 0 0 -2.97 -2.97l-8.415 8.385v3h3l8.385 -8.415z" />
+                            <path d="M16 5l3 3" />
+                            </svg></td>
+                        </tr>
+                    <%}}) %>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+    </main>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script> -->
+    <script src="/js/juez.js"></script>
+</body>

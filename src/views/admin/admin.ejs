@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&family=Montserrat:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <title>Concurso Académico 2024</title>
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+</head>
+<body id="body">
+    <header class="header">
+        <div class="contenedor">
+            <div class="cont-header">
+                <div>
+                    <img class="img-header" src="/img/nuestroLogo.png" alt="img_header">
+                </div>
+                <div>
+                </div>
+                <div class="user-info">
+                    <img class="img-user" src="/img/user.webp" alt="user_img">
+                    <p>
+                        <%= username %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="contenedor admin">
+        <div>
+            <h4>Usuarios conectados</h4>
+            <div class="cont-conn">
+            </div>
+        </div>
+        <div class="info">
+            <div>
+                <h4>Ronda</h4>
+                <p id="cont_r"></p>
+            </div>
+            <div>
+                <h4>Pregunta</h4>
+                <p id="cont_p"></p>
+            </div>
+        </div>
+        <div class="cont-btn">
+            <button id="admin_inicio">Iniciar concurso</button>
+            <button id="admin_round">Comenzar ronda</button>
+            <button id="admin_next">Siguiente pregunta</button>
+        </div>
+    </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="/js/admin.js"></script>
+</body>

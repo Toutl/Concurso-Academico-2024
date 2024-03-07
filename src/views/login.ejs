@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&family=Montserrat:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <title>Concurso Académico 2024</title>
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="icon" type="image/png" href="img/favicon.png">
+</head>
+<body>
+    <main class="main-login">
+        <div class="contenedor-login">
+            <div class="bloque">
+                <img src="/img/login.webp" alt="login_img">
+            </div>
+            <div class="bloque">
+                <form method="post">
+                    <h3>Iniciar sesión </h3>
+                    <div class="fieldset">
+                        <div class="field">
+                            <input required type="text" placeholder="Usuario" name="username" id="user" autofocus tabindex="1"> 
+                        </div>
+                        <div class="field">
+                            <input required type="password" placeholder="Contraseña" name="pw" id="pw" tabindex="2">
+                        </div>
+                    </div>
+                    <input type="submit" value="Iniciar sesión" class="btn-enviar">
+                    <% if(error) { %>
+                        <p class="error"><%= error %></p>
+                    <% } %>
+                </form>
+            </div>
+        </div>
+    </main>
+</body>

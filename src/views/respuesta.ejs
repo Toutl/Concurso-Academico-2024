@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&family=Montserrat:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Concurso Académico 2024</title>
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+</head>
+<body>
+    <header class="header">
+        <div class="contenedor">
+            <div class="cont-header">
+                <div>
+                    <img class="img-header" src="/img/nuestroLogo.png" alt="img_header">
+                </div>
+                <div>
+                    <h4 class="no-margin">Ronda <%= round %> </h4>
+                </div>
+                <div class="user-info">
+                    <img class="img-user" src="/img/user.webp" alt="user_img">
+                    <p id="user"><%= user_info.username %></p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="resultado contenedor">
+        <div class="score contenedor">
+            <div class="puntaje">
+                 <% if(correcto == true){ %> 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-circle-check" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#00b341" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                        <path d="M9 12l2 2l4 -4" />
+                    </svg>
+                    <h2><%= score %> pts</h2>
+                <% }else{ %>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-xbox-x" width="40" height="40" viewBox="0 0 24 24" stroke-width="1.5" stroke="#ff4500" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 21a9 9 0 0 0 9 -9a9 9 0 0 0 -9 -9a9 9 0 0 0 -9 9a9 9 0 0 0 9 9z" />
+                        <path d="M9 8l6 8" />
+                        <path d="M15 8l-6 8" />
+                    </svg>
+                    <h2>0 pts</h2>
+                <% } %>
+            </div>
+            <% if(img == ''){ %>
+                <div class="r">
+                    <h3 class="center gris"><%= p %></h3>
+                </div>
+            <% }else { %>
+                <div class="r">
+                    <h3 class="center gris"><%= p %></h3>
+                    <img class="img_r" src="/img/santafeklan.webp" alt="img">
+                </div>
+            <% } %>
+            <div class="cont-r contenedor">
+                <% rs.forEach(function(erre) { 
+                    if (erre == r_correct){ %>
+                    <h4 class="r-correct"><%= r_correct %></h4>
+                    <% }
+                    if (erre == r && correcto == false) { %>
+                    <h4 class="r-incorrect"><%= erre %></h4>
+                    <% }if (erre != r && erre != r_correct){%>
+                        <h4><%= erre %></h4>
+                <% }
+                }) %>
+            </div>
+            <div class="r-score">
+                <p>Tu puntaje: </p>
+                <h3 class="no-margin"><%= user_info.score %></h3>
+            </div>
+            <p>Esperando siguiente pregunta...</p>
+        </div>
+    </main>
+    <a id="link_next" href="/pregunta/<%= round %>" class="hidden"></a>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="/js/respuesta.js"></script>
+</body>

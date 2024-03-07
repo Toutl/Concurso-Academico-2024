@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@300;600;700&family=Montserrat:wght@400;700;900&display=swap"
+        rel="stylesheet">
+    <title>Concurso Académico 2024</title>
+    <link rel="stylesheet" href="/css/app.css">
+    <link rel="icon" type="image/png" href="/img/favicon.png">
+</head>
+
+<body>
+    <header class="header">
+        <div class="contenedor">
+            <div class="cont-header">
+                <div>
+                    <img class="img-header" src="/img/nuestroLogo.png" alt="img_header">
+                </div>
+                <div>
+                    <h4 id="round" class="no-margin">Ronda <%= round %>
+                    </h4>
+                </div>
+                <div class="user-info">
+                    <img class="img-user" src="/img/user.webp" alt="user_img">
+                    <p id="user">
+                        <%= user_info.username %>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <form class="pregunta contenedor" action="/respuesta" method="post">
+        <div class="timer">
+            <p class="time"></p>
+        </div>
+        <% if(preguntas[0].img == null){ %>
+            <div class="p">
+                <h2 id="pregunta">
+                    <%= preguntas[0].pregunta %>
+                </h2>
+            </div>
+        <% } else { %>
+            <div class="p">
+                <h2 id="pregunta">
+                    <%= preguntas[0].pregunta %>
+                </h2>
+                <img class="img_p" src="/img/santafeklan.webp" alt="img">
+            </div>
+        <% } %>
+        <div class="opc-cont contenedor">
+            <div class="opc">
+                <input required type="radio" name="r" id="r1" value="<%= preguntas[0].r1 %>">
+                <label for="r1" class="r1">
+                    <%= preguntas[0].r1 %>
+                </label>
+            </div>
+            <div class="opc">
+                <input required type="radio" name="r" id="r2" value="<%= preguntas[0].r2 %>">
+                <label for="r2" class="r2">
+                    <%= preguntas[0].r2 %>
+                </label>
+            </div>
+            <div class="opc">
+                <input required type="radio" name="r" id="r3" value="<%= preguntas[0].r3 %>">
+                <label for="r3" class="r3">
+                    <%= preguntas[0].r3 %>
+                </label>
+            </div>
+            <div class="opc">
+                <input required type="radio" name="r" id="r4" value="<%= preguntas[0].r4 %>">
+                <label for="r4" class="r4">
+                    <%= preguntas[0].r4 %>
+                </label>
+            </div>
+            <input hidden class="r_null" type="radio" name="r" id="no" value="no respondió">
+            <input hidden type="text" name="p_id" value="<%= preguntas[0].id %>">
+            <input hidden type="text" name="r_correct" value="<%= preguntas[0].correct %>">
+            <input hidden type="text" name="p" value="<%= preguntas[0].pregunta %>">
+            <input hidden type="text" name="opc1" value="<%= preguntas[0].r1 %>">
+            <input hidden type="text" name="opc2" value="<%= preguntas[0].r2 %>">
+            <input hidden type="text" name="opc3" value="<%= preguntas[0].r3 %>">
+            <input hidden type="text" name="opc4" value="<%= preguntas[0].r4 %>">
+            <input hidden type="text" name="round" value="<%= round %>">
+            <input hidden type="text" name="score" value="<%= preguntas[0].score %>">
+            <input hidden type="text" name="img" value="<%= preguntas[0].img %>">
+            <input hidden type="text" name="time" value="" id="time">
+            <input id="submit" type="submit" value="Revisar pregunta" class="revisar">
+        </div>
+    </form>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.4.1/socket.io.min.js"></script>
+    <script src="/js/pregunta.js"></script>
+</body>
