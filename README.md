@@ -14,3 +14,5 @@ Capturas de pantalla
 --------------------
 ![Inicio Sesion](https://raw.githubusercontent.com/Toutl/Concurso-Academico/img/Admin.jpeg)
 
+-----------------------
+##### *Código elaborado por Haziel Isaías Murillo Echauri y Diego Ubaldo Crespo Neri* 
